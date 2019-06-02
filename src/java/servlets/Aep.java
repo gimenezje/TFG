@@ -54,6 +54,7 @@ public class Aep extends HttpServlet {
         if (con == null) {
             request.getRequestDispatcher("jsp/login.jsp")
                     .forward(request, response);
+            return;
         }
 
         // Resaltar opción del menú

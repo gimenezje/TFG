@@ -36,6 +36,7 @@
             response.setDateHeader("Expires", 0);
             if (session.getAttribute("usr") == null) {
                 request.getRequestDispatcher("/Cs").forward(request, response);
+                return;
             }
         %>
 

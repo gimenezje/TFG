@@ -64,12 +64,14 @@ public class Login extends HttpServlet {
                     + "No hallado el archivo config.ini</div>");
             request.getRequestDispatcher("jsp/login.jsp")
                     .forward(request, response);
+            return;
         } catch (IOException e) {
             request.setAttribute("txmsj",
                     "<div class=\"alert alert-danger\" role=\"alert\">"
                     + "Error de lectura del archivo config.ini</div>");
             request.getRequestDispatcher("jsp/login.jsp")
                     .forward(request, response);
+            return;
         }
         dateKey = p.getProperty("DATE_KEY");
         System.setProperty("dateKey", dateKey);
@@ -80,6 +82,7 @@ public class Login extends HttpServlet {
         if (con == null) {
             request.getRequestDispatcher("jsp/login.jsp")
                     .forward(request, response);
+            return;
         }
 
         // Obtener credenciales introducidas
@@ -91,6 +94,7 @@ public class Login extends HttpServlet {
         if (!DBs.chkCred(con, usr, pas, request)) {
             request.getRequestDispatcher("jsp/login.jsp")
                     .forward(request, response);
+            return;
         }
 
         // Acceder al menú principal
